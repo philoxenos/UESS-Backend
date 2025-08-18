@@ -1,3 +1,28 @@
 {
-  "users": []
+  "users": [
+    {
+      "email": "gersanibalerwin@gmail.com",
+      "name": "Lerwin",
+      "surname": "Gersaniba",
+      "createdAt": "2025-01-15T10:30:00Z",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+      "role": "user"
+    },
+    {
+      "email": "archfaded21@gmail.com",
+      "name": "Faded",
+      "surname": "Arch",
+      "createdAt": "2025-03-22T14:45:00Z",
+      "password": "328c89aea7fbd5ac50cdfdb7fbbf44837ce16226bbf00c6a4580b8510699e64b",
+      "role": "user"
+    },
+    {
+      "email": "jane@example.com",
+      "name": "Jane",
+      "surname": "Smith",
+      "createdAt": "2025-04-10T09:15:00Z",
+      "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+      "role": "user"
+    }
+  ]
 }
