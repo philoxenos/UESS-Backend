@@ -1,3 +1,25 @@
 {
-  "users": []
+  "users": [
+    {
+      "email": "archfaded21@gmail.com",
+      "name": "Faded",
+      "surname": "Arch",
+      "createdAt": "2025-01-01T00:00:00Z",
+      "role": "admin"
+    },
+    {
+      "email": "gersanibalerwin@gmail.com",
+      "name": "Lerwin",
+      "surname": "Gersaniba",
+      "createdAt": "2025-01-01T00:00:00Z",
+      "role": "user"
+    },
+    {
+      "email": "frtlemon@gmail.com",
+      "name": "Fruit",
+      "surname": "Lemon",
+      "createdAt": "2025-01-01T00:00:00Z",
+      "role": "admin"
+    }
+  ]
 }
