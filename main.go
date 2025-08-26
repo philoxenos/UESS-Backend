@@ -16,7 +16,6 @@ type User struct {
 	Name      string `json:"name,omitempty"`
 	Surname   string `json:"surname,omitempty"`
 	CreatedAt string `json:"createdAt,omitempty"`
-	Password  string `json:"password,omitempty"`
 	Role      string `json:"role,omitempty"`
 }
 
@@ -111,7 +110,7 @@ func AuthenticateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// UpdateUserHandler handles user password update requests
+// UpdateUserHandler handles user update requests (no longer updates passwords)
 func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPut {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -135,16 +134,19 @@ func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 	userDB.mu.Lock()
 	defer userDB.mu.Unlock()
 
-	// Find and update the user
+	// Find the user to check if they exist
 	userFound := false
 	for i, existingUser := range userDB.Users {
 		if existingUser.Email == user.Email {
-			// Update user data
-			if user.Password != "" {
-				userDB.Users[i].Password = user.Password
-			}
+			// Update user data (excluding password)
 			if user.Role != "" {
 				userDB.Users[i].Role = user.Role
+			}
+			if user.Name != "" {
+				userDB.Users[i].Name = user.Name
+			}
+			if user.Surname != "" {
+				userDB.Users[i].Surname = user.Surname
 			}
 			userFound = true
 			break
@@ -157,7 +159,7 @@ func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)
 		json.NewEncoder(w).Encode(map[string]interface{}{
 			"status":  "error",
-			"message": "User not found. Only authorized users can update their password.",
+			"message": "User not found. Only authorized users can be updated.",
 		})
 		return
 	}
